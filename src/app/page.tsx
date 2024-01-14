@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react';
-import Stop from '@/types/stop';
+import Stop from '@/types/Stop';
 import Image from 'next/image';
 
 export default function Home() {

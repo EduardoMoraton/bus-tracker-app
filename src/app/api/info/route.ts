@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { parse } from 'node-html-parser';
-import Stop from '../../../types/stop'
+import Stop from '../../../types/Stop'
 import NextBus from "@/types/NextBus";
 
 const BASE = "https://qr.vectalia.es/Alicante/consulta.aspx?p=";
