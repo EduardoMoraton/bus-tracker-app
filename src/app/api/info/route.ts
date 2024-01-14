@@ -55,10 +55,10 @@ export async function GET(req: NextRequest, res: NextResponse) {
 
 
 
-    return new Response(JSON.stringify(stop), { status: 200, headers: [['content-type', 'application/json']] });
+    return new Response(JSON.stringify(htmlBody), { status: 200, headers: [['content-type', 'application/json']] });
   } catch (error) {
 
     console.log('An error occurred:', error);
-    return new Response(JSON.stringify(error), { status: 200, headers: [['content-type', 'application/json']] });
+    return new Response(JSON.stringify(error), { status: 500, headers: [['content-type', 'application/json']] });
   }
 }
