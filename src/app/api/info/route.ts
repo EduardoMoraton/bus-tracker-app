@@ -4,7 +4,7 @@ import Stop from '../../../types/Stop'
 import NextBus from "@/types/NextBus";
 
 const BASE = "https://qr.vectalia.es/Alicante/consulta.aspx?p=";
-
+export const dynamic = "force-dynamic";
 export async function GET(req: NextRequest, res: NextResponse) {
   try {
     const num = req.nextUrl.searchParams.get('q');
