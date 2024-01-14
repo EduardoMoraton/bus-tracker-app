@@ -3,7 +3,9 @@ import { useState, useEffect } from 'react';
 import Stop from '@/types/Stop';
 import Image from 'next/image';
 
+export const dynamic = "force-dynamic";
 export default function Home() {
+  
   const [inputValue, setInputValue] = useState('');
   const [stops, setStops] = useState<Stop[]>([]);
 
