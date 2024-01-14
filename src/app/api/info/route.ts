@@ -24,7 +24,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
     let raw = root.text
 
 
-    let name = raw.split(num)[1].split(" \r\n\t\t\t\t\t\r\n\t\t\t\t\r\n")[0].replace("\r\n\t\t\t\t\t\t", "")
+    //let name = raw.split(num)[1].split(" \r\n\t\t\t\t\t\r\n\t\t\t\t\r\n")[0].replace("\r\n\t\t\t\t\t\t", "")
     
     let rawbus = raw.split("text =")[1].split("\"\";")[0]
 
@@ -44,7 +44,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
 
 
     let stop : Stop = {
-        name: name,
+        name: "name",
         customName: "",
         code: +num??0,
         nextBuses: nextBuses
