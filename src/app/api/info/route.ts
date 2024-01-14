@@ -19,35 +19,35 @@ export async function GET(req: NextRequest, res: NextResponse) {
 
 
     const htmlBody = await response.text();
-    const root = parse(htmlBody);
+    //const root = parse(htmlBody);
     
-    let raw = root.text
+    //let raw = root.text
 
 
     //let name = raw.split(num)[1].split(" \r\n\t\t\t\t\t\r\n\t\t\t\t\r\n")[0].replace("\r\n\t\t\t\t\t\t", "")
     
-    let rawbus = raw.split("text =")[1].split("\"\";")[0]
+    //let rawbus = raw.split("text =")[1].split("\"\";")[0]
 
-    let busLines = rawbus.split("Linea")
-    busLines.shift();
+    //let busLines = rawbus.split("Linea")
+    //busLines.shift();
     
-    const nextBuses: NextBus[] = busLines.map(busLine => {
-        let kind = busLine.split(" ")[1]
-        let min = busLine.split("min")[0].split(": ")[1].trim()
-        
-        let nextBus : NextBus = {
-            kind: kind,
-            min: +min
-        }
-        return nextBus;
-      });
+    //const nextBuses: NextBus[] = busLines.map(busLine => {
+    //    let kind = busLine.split(" ")[1]
+    //    let min = busLine.split("min")[0].split(": ")[1].trim()
+    //    
+    //    let nextBus : NextBus = {
+    //        kind: kind,
+    //        min: +min
+    //    }
+    //    return nextBus;
+    //  });
 
 
     let stop : Stop = {
         name: "name",
         customName: "",
         code: +num??0,
-        nextBuses: nextBuses
+        nextBuses: []
     }
     
 
