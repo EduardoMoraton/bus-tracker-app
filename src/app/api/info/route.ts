@@ -58,7 +58,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
     return new Response(JSON.stringify(stop), { status: 200, headers: [['content-type', 'application/json']] });
   } catch (error) {
 
-    console.error('An error occurred:', error);
-    return new Response(JSON.stringify({"error":"unexpected"}), { status: 200, headers: [['content-type', 'application/json']] });
+    console.log('An error occurred:', error);
+    return new Response(JSON.stringify(error), { status: 200, headers: [['content-type', 'application/json']] });
   }
 }
