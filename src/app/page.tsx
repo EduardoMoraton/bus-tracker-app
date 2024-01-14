@@ -88,7 +88,7 @@ export default function Home() {
             <div className={'flex flex-col'}>
               {stop.nextBuses.map((bus, busIndex) => (
                 <div key={busIndex} className={'flex'}>
-                  <p className={'text-red-800 mr-2'}>{bus.kind}</p>
+                  <p className={'text-red-700 mr-2'}>{bus.kind}</p>
     
                   <p>{"" + bus.min}min</p>
                 </div>
