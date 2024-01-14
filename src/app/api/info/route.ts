@@ -12,7 +12,11 @@ export async function GET(req: NextRequest, res: NextResponse) {
     if (num==null) {
         return new Response(JSON.stringify({"error":"unexpected"}), { status: 200, headers: [['content-type', 'application/json']] });
     }
-    const response = await fetch(url);
+    const headers = new Headers({
+      'User-Agent': "Mozilla/5.0 (iPhone; CPU iPhone OS 17_2_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Mobile/15E148 Safari/604.1",
+    });
+    
+    const response = await fetch(url, { headers });
 
 
 
