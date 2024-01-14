@@ -19,7 +19,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
 
 
     const htmlBody = await response.text();
-    //const root = parse(htmlBody);
+    const root = parse(htmlBody);
     
     //let raw = root.text
 
