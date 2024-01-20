@@ -18,45 +18,56 @@ export async function GET(req: NextRequest, res: NextResponse) {
 
 
 
-    const htmlBody = await response.text();
-    const root = parse(htmlBody);
+    const raw = await response.text();
+
+    const regex1 = /<span\s+id="parada_desc">([^<]+)<\/span>/;
+
+    const match1 = raw.match(regex1);
+
+    const stopName = match1 ? match1[1].trim() : "Unknown Stop";
     
-    //let raw = root.text
+    const regex2 = /var text = "(.*?)";/s;
 
 
-    //let name = raw.split(num)[1].split(" \r\n\t\t\t\t\t\r\n\t\t\t\t\r\n")[0].replace("\r\n\t\t\t\t\t\t", "")
-    
-    //let rawbus = raw.split("text =")[1].split("\"\";")[0]
+    const match2 = raw.match(regex2);
 
-    //let busLines = rawbus.split("Linea")
-    //busLines.shift();
+
+    const extractedText = match2 ? match2[1] : "";
     
-    //const nextBuses: NextBus[] = busLines.map(busLine => {
-    //    let kind = busLine.split(" ")[1]
-    //    let min = busLine.split("min")[0].split(": ")[1].trim()
-    //    
-    //    let nextBus : NextBus = {
-    //        kind: kind,
-    //        min: +min
-    //    }
-    //    return nextBus;
-    //  });
+    const nextBuses: NextBus[] = [];
+    const lines = extractedText.split("\\n");
+    lines.forEach(line => {
+        // Use regular expressions to extract relevant information
+        const match = line.match(/Linea (\d+) ([A-Z\s]+): (\d+) min/);
+        if (match) {
+            const [, line, direction, min] = match;
+            const nextBus: NextBus = {
+                kind: `Linea ${line}`,
+                direction,
+                min: Number(min)
+            };
+            nextBuses.push(nextBus);
+        }
+    });
+
 
 
     let stop : Stop = {
-        name: "name",
+        name: stopName,
         customName: "",
         code: +num??0,
-        nextBuses: []
+        nextBuses: nextBuses
     }
     
 
 
 
-    return new Response(JSON.stringify(htmlBody), { status: 200, headers: [['content-type', 'application/json']] });
+    return new Response(JSON.stringify(stop), { status: 200, headers: [['content-type', 'application/json']] });
   } catch (error) {
 
     console.log('An error occurred:', error);
     return new Response(JSON.stringify(error), { status: 500, headers: [['content-type', 'application/json']] });
   }
 }
+
+

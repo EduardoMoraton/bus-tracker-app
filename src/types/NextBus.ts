@@ -1,5 +1,6 @@
 type NextBus = {
-    kind: String,
+    kind: string,
+    direction: string
     min: Number
 }
 

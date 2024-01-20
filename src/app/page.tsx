@@ -91,7 +91,7 @@ export default function Home() {
               {stop.nextBuses.map((bus, busIndex) => (
                 <div key={busIndex} className={'flex'}>
                   <p className={'text-red-700 mr-2'}>{bus.kind}</p>
-    
+                  <p>{bus.direction}</p>
                   <p>{"" + bus.min}min</p>
                 </div>
               ))}
