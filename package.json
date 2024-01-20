@@ -12,7 +12,8 @@
     "next": "14.0.4",
     "node-html-parser": "^6.1.12",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "tailwindcss-neumorphism": "^0.1.0"
   },
   "devDependencies": {
     "@types/node": "^20",
