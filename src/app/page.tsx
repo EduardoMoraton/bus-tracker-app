@@ -90,7 +90,7 @@ export default function Home() {
             <div className={'flex flex-col gap-2'}>
               {stop.nextBuses.map((bus, busIndex) => (
                 <div key={busIndex} className={'flex nm-inset-gray-50-sm rounded-md p-2 gap-4'}>
-                  <p className={'text-red-700 mr-2'}>{bus.kind}</p>
+                  <p className={'text-red-700 mr-2 border-2 border-black'}>{bus.kind}</p>
                   <p>{bus.direction}</p>
                   <p>{"" + bus.min}min</p>
                 </div>
@@ -112,9 +112,9 @@ export default function Home() {
         </div>
         <div className={'flex text-2xl justify-evenly'}>
           
-          <button className='p-2 rounded-full nm-convex-white active:nm-inset-white' onClick={handleAdd}>➕</button>
-          <button className='p-2 rounded-full nm-convex-white active:nm-inset-white' onClick={handleSave}>💾</button>
-          <button className='p-2 rounded-full nm-convex-white active:nm-inset-white' onClick={handleUpdate}>🔄</button>
+          <button className='p-2 w-10 h-10 rounded-full nm-convex-white active:nm-inset-white' onClick={handleAdd}>➕</button>
+          <button className='p-2 w-10 h-10 rounded-full nm-convex-white active:nm-inset-white' onClick={handleSave}>💾</button>
+          <button className='p-2 w-10 h-10 rounded-full nm-convex-white active:nm-inset-white' onClick={handleUpdate}>🔄</button>
         </div>
         
       </div>

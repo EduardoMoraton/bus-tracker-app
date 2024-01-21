@@ -37,13 +37,16 @@ export async function GET(req: NextRequest, res: NextResponse) {
     const nextBuses: NextBus[] = [];
     const lines = extractedText.split("\\n");
     lines.forEach(line => {
-        // Use regular expressions to extract relevant information
-        const match = line.match(/Linea (\d+) ([A-Z\s]+): (\d+) min/);
-        if (match) {
-            const [, line, direction, min] = match;
+        console.log(line)
+        
+        if (line.includes("Linea")) {
+            const lineNumber = line.split("Linea")[1].split(" ")[1]
+            const min = line.split(":")[1].split(" ")[1]
+            const direction = line.split("Linea")[1].split(":")[0].substring(4)
+
             const nextBus: NextBus = {
-                kind: `Linea ${line}`,
-                direction,
+                kind: lineNumber,
+                direction:direction,
                 min: Number(min)
             };
             nextBuses.push(nextBus);
