@@ -90,7 +90,7 @@ export default function Home() {
       </div>
       <div className={'flex-grow w-[100%] flex justify-start flex-col overflow-y-scroll'}>
         {stops.map((stop, index) => (
-          <StopItem stop={stop} onDelete={handleDelete} index={index}></StopItem>
+          <StopItem key={index} stop={stop} onDelete={handleDelete} index={index}></StopItem>
         ))}
       </div>
       <div className={'nm-flat-white-lg w-[100%] p-5 flex flex-col rounded-md m-2 shadow-lg'}>
