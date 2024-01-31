@@ -83,7 +83,8 @@ export default function Home() {
   }
 
   return (
-    <main className='flex items-center justify-center flex-col w-screen h-screen bg-gray-100 text-black p-10'>
+    <main>
+        <div className='flex items-center justify-center flex-col w-screen h-screen bg-gray-100 text-black p-10'>
       <div>
         <h1 className='text-5xl'>Alicante bus 🚌</h1>
       </div>
@@ -111,6 +112,18 @@ export default function Home() {
         </div>
         
       </div>
+
+      </div>
+      <footer className={'flex w-screen h-11 gap-8  justify-center items-center bg-black'}>
+
+              <a className={'hover:text-pink-400 transition-all'} href='https://portfolio-eduardomoraton.vercel.app/'>Eduardo Moraton</a>
+              <a className={'hover:text-pink-400 transition-all'} href='https://www.linkedin.com/in/eduardo-moraton-moyano/'>LN</a>
+              <a className={'hover:text-pink-400 transition-all'} href='mailto:moraton.eduardo@gmail.com'>Mail</a>
+              <a className={'hover:text-pink-400 transition-all'}  href='https://github.com/EduardoMoraton/bus-tracker-app'>Code for this project</a>
+              <p>2024</p>
+      </footer>
     </main>
+    
+
   );
 }
