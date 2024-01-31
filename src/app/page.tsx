@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import Stop from '@/types/Stop';
 import Image from 'next/image';
+import StopItem from './components/StopItem';
 
 export const dynamic = "force-dynamic";
 export default function Home() {
@@ -77,29 +78,21 @@ export default function Home() {
     update(stops)
   }
 
+  const handleDelete = (index:Number) => {
+    setStops(stops.filter((stop, i)=>i!=index))
+  }
+
   return (
-    <main className='flex items-center justify-center flex-col w-screen h-screen bg-gray-100 text-black'>
+    <main className='flex items-center justify-center flex-col w-screen h-screen bg-gray-100 text-black p-10'>
       <div>
         <h1 className='text-5xl'>Alicante bus 🚌</h1>
       </div>
-      <div className={'flex-grow flex justify-start flex-col'}>
+      <div className={'flex-grow w-[100%] flex justify-start flex-col overflow-y-scroll'}>
         {stops.map((stop, index) => (
-          <div key={index} className={'w-[100%] nm-flat-white-lg s p-5 m-2 rounded-lg'}>
-            <p>{stop.name}</p>
-            <p>{"" + stop.code}</p>
-            <div className={'flex flex-col gap-2'}>
-              {stop.nextBuses.map((bus, busIndex) => (
-                <div key={busIndex} className={'flex nm-inset-gray-50-sm rounded-md p-2 gap-4'}>
-                  <p className={'text-red-700 mr-2 border-2 border-black'}>{bus.kind}</p>
-                  <p>{bus.direction}</p>
-                  <p>{"" + bus.min}min</p>
-                </div>
-              ))}
-            </div>
-          </div>
+          <StopItem stop={stop} onDelete={handleDelete} index={index}></StopItem>
         ))}
       </div>
-      <div className={'nm-flat-white-lg p-5 flex flex-col rounded-md m-2 shadow-lg'}>
+      <div className={'nm-flat-white-lg w-[100%] p-5 flex flex-col rounded-md m-2 shadow-lg'}>
         <p>Código parada:</p>
         <div className='nm-inset-white p-2 my-2 rounded'>
           
