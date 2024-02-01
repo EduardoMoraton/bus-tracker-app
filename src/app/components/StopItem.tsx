@@ -21,7 +21,7 @@ const StopItem = (props: { stop: Stop, onDelete: Function, index:Number}) => {
 
               <div className={'flex flex-col gap-2'}>
                 {props.stop.nextBuses.map((bus, busIndex) => (
-                  <div key={busIndex} className={'flex nm-inset-gray-50-sm rounded-md p-2 gap-4'}>
+                  <div key={busIndex} className={'flex flex-col nm-inset-gray-50-sm rounded-md p-2 gap-4'}>
                     <p className={'text-red-700 mr-2 border-2 border-black'}>{bus.kind}</p>
                     <p>{bus.direction}</p>
                     <p>{"" + bus.min}min</p>
