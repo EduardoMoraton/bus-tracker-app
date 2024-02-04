@@ -9,12 +9,26 @@ export default function Home() {
   
   const [inputValue, setInputValue] = useState('');
   const [stops, setStops] = useState<Stop[]>([]);
+  const [updated, setUpdated] = useState<number>(0);
+  const [nowTime, setNowTime] = useState<number>(0);
 
   useEffect(() => {
     const storedStops = localStorage.getItem('stops');
     if (storedStops) {
       setStops(JSON.parse(storedStops));
       update(JSON.parse(storedStops))
+
+      setInterval(()=> {
+        update(JSON.parse(storedStops))
+        setUpdated(Date.now())
+        return true;
+      }, 15000)
+
+      setInterval(()=>{
+        setNowTime(updated - Date.now())
+        console.log("AA")
+        return true;
+      },1000)
     }
   }, []);
 
@@ -62,7 +76,7 @@ export default function Home() {
 
         setStops((prevStops) => [...prevStops, newStop])
         setInputValue('');
-
+        save()
   
       } catch (error) {
         console.error('Error fetching stop information:', error);
@@ -88,11 +102,15 @@ export default function Home() {
       <div>
         <h1 className='text-5xl'>Alicante bus 🚌</h1>
       </div>
+      <div>
+        <p>Actualizado hace:</p>
+        {nowTime}
+      </div>
       <div className={'flex-grow w-[100%] flex justify-start flex-col overflow-y-scroll'}>
         {stops.map((stop, index) => (
           <StopItem key={index} stop={stop} onDelete={handleDelete} index={index}></StopItem>
         ))}
-      </div>
+      d</div>
       <div className={'nm-flat-white-lg w-[100%] p-5 flex flex-col rounded-md m-2 shadow-lg'}>
         <p>Código parada:</p>
         <div className='nm-inset-white p-2 my-2 rounded'>
