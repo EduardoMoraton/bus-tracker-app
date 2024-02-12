@@ -82,10 +82,10 @@ export default function Home() {
           customName: stopData.customName,
           code: stopData.code,
           nextBuses: stopData.nextBuses || [],
-        };
+        }
 
         setStops((prevStops) => [...prevStops, newStop])
-        setInputValue('');
+        setInputValue("");
         save()
   
       } catch (error) {
