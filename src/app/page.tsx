@@ -59,7 +59,7 @@ export default function Home() {
       console.log("updated")
       setStops(updatedStops);
     } catch (error) {
-      console.error('Error updating stops:', error);
+      console.error("Error updating stops:", error);
     }
 
   }
@@ -67,7 +67,7 @@ export default function Home() {
 
 
   const save = () => {
-    localStorage.setItem('stops', JSON.stringify(stops))
+    localStorage.setItem("stops", JSON.stringify(stops))
     console.log("saved")
   }
 
