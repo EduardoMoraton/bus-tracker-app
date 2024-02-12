@@ -13,7 +13,17 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      colors: {
+        red:"#EE4266",
+        blue:"#80A4ED",
+        yellow:"#F5E663",
+        card:"rgba(194, 194, 194, 0.2)"
+      },
+      fontFamily: {
+        bebas: ["Bebas Neue", "sans-serif"],
+       },
     },
+
   },
   plugins: [require('tailwindcss-neumorphism')],
 }

@@ -16,7 +16,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap')
+      </style>
+      <body className={inter.className}>{children}</body> 
     </html>
   )
 }
